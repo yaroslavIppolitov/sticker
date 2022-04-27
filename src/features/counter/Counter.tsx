@@ -1,3 +1,6 @@
+/* eslint-disable react/button-has-type */
+/* eslint-disable import/no-mutable-exports */
+/* eslint-disable import/prefer-default-export */
 import React, { useState } from 'react';
 
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
@@ -11,7 +14,7 @@ import {
 } from './counterSlice';
 import styles from './Counter.module.css';
 
-export function Counter() {
+export const Counter = () => {
   const count = useAppSelector(selectCount);
   const dispatch = useAppDispatch();
   const [incrementAmount, setIncrementAmount] = useState('2');
@@ -24,16 +27,14 @@ export function Counter() {
         <button
           className={styles.button}
           aria-label="Decrement value"
-          onClick={() => dispatch(decrement())}
-        >
+          onClick={() => dispatch(decrement())}>
           -
         </button>
         <span className={styles.value}>{count}</span>
         <button
           className={styles.button}
           aria-label="Increment value"
-          onClick={() => dispatch(increment())}
-        >
+          onClick={() => dispatch(increment())}>
           +
         </button>
       </div>
@@ -46,23 +47,18 @@ export function Counter() {
         />
         <button
           className={styles.button}
-          onClick={() => dispatch(incrementByAmount(incrementValue))}
-        >
+          onClick={() => dispatch(incrementByAmount(incrementValue))}>
           Add Amount
         </button>
         <button
           className={styles.asyncButton}
-          onClick={() => dispatch(incrementAsync(incrementValue))}
-        >
+          onClick={() => dispatch(incrementAsync(incrementValue))}>
           Add Async
         </button>
-        <button
-          className={styles.button}
-          onClick={() => dispatch(incrementIfOdd(incrementValue))}
-        >
+        <button className={styles.button} onClick={() => dispatch(incrementIfOdd(incrementValue))}>
           Add If Odd
         </button>
       </div>
     </div>
   );
-}
+};
